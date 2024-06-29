@@ -1,0 +1,157 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Book Details</title>-->
+<!--  <style>-->
+<!--        /* Styles for page layout */-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            margin: 20px;-->
+<!--        }-->
+<!--        .container {-->
+<!--            max-width: 600px;-->
+<!--            margin: auto;-->
+<!--        }-->
+<!--        h2 {-->
+<!--            color: #333;-->
+<!--        }-->
+<!--        /* Styles for book details */-->
+<!--        .book-details {-->
+<!--            margin-top: 20px;-->
+<!--            border: 1px solid #ddd;-->
+<!--            padding: 20px;-->
+<!--            border-radius: 5px;-->
+<!--            background-color: #f9f9f9;-->
+<!--        }-->
+<!--        .book-details table {-->
+<!--            width: 100%;-->
+<!--            border-collapse: collapse;-->
+<!--        }-->
+<!--        .book-details th, .book-details td {-->
+<!--            padding: 8px;-->
+<!--            border-bottom: 1px solid #ddd;-->
+<!--        }-->
+<!--        .book-details th {-->
+<!--            text-align: left;-->
+<!--            color: #555;-->
+<!--        }-->
+<!--        .book-details td {-->
+<!--            vertical-align: top;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--  <h2>Book Details</h2>-->
+<!--  <div class="book-details">-->
+<!--    <table>-->
+<!--      <tr>-->
+<!--        <th>ID</th>-->
+<!--        <td th:text="${book.id}">-</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th>Name</th>-->
+<!--        <td th:text="${book.name}">-</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th>Author ID</th>-->
+<!--        <td th:text="${book.authorId}">-</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th>Genre</th>-->
+<!--        <td th:text="${book.genre}">-</td>-->
+<!--      </tr>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--  <p><a href="/books">Back to Book List</a></p>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Details</title>
+  <style>
+        /* Styles for page layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        /* Styles for book details */
+        .book-details {
+            margin-top: 20px;
+        }
+        .book-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .book-details th, .book-details td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        .book-details th {
+            text-align: left;
+            color: #555;
+        }
+        .book-details td {
+            vertical-align: top;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+  <h2>Book Details</h2>
+  <div class="book-details">
+    <table>
+      <tr>
+        <th>ID</th>
+        <td th:text="${book.id}">-</td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td th:text="${book.name}">-</td>
+      </tr>
+      <tr>
+        <th>Author ID</th>
+        <td th:text="${book.authorId}">-</td>
+      </tr>
+      <tr>
+        <th>Genre</th>
+        <td th:text="${book.genre}">-</td>
+      </tr>
+    </table>
+  </div>
+  <a class="back-link" th:href="@{/books}">Back to Book List</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Books</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styles for form */
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Styles for table */
+        table {
+            margin: 0 auto 20px;
+            width: 80%;
+            max-width: 600px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Styles for clickable book names */
+        .book-link {
+            color: #0366d6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .book-link:hover {
+            color: #0551a4;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Logout button -->
+<form action="/logout" method="get">
+    <button type="submit">Logout</button>
+</form>
+
+<!-- New Book Form -->
+<form action="#" th:action="@{/books}" th:object="${newBook}" method="post">
+    <h2 style="text-align: center;">List of Books</h2>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required/>
+
+    <label for="authorId">Author ID:</label>
+    <input type="text" id="authorId" name="authorId" required/>
+
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre" required/>
+
+    <button type="submit">Add Book</button>
+</form>
+
+<!-- List of Books -->
+<table>
+    <!-- Table headers -->
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Author ID</th>
+        <th>Genre</th>
+        <th>Actions</th> <!-- Added column for actions -->
+    </tr>
+    </thead>
+    <!-- Table body -->
+    <tbody>
+    <tr th:each="book : ${books}">
+        <!-- Display book details -->
+        <td th:text="${book.id}">-</td>
+        <td>
+            <!-- Make book name clickable -->
+            <a th:href="@{/books/{id}(id=${book.id})}" class="book-link" th:text="${book.name}">-</a>
+        </td>
+        <td th:text="${book.authorId}">-</td>
+        <td th:text="${book.genre}">-</td>
+        <!-- Delete and Edit buttons -->
+        <td>
+            <form th:action="@{/books/delete/{id}(id=${book.id})}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Delete</button>
+            </form>
+            <a th:href="@{/books/edit/{id}(id=${book.id})}"><button>Edit</button></a> <!-- Edit button -->
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
